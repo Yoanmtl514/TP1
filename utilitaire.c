@@ -84,8 +84,16 @@ int calculer_nb_bits_actifs( unsigned int valeur)
 
 }
 
-void afficher_bits ( unsigned int valeur, unsigned int bit_depart, unsigned int bit_fin)
-{
-// ************************A FAIRE *********************************
+void afficher_bits(unsigned int valeur, int bit_depart, int bit_fin) {
+
+    printf("(0x%08X) : ", valeur);
+
+    for (int i = bit_fin; i >= bit_depart; i--) {
+        printf("%d", (valeur >> i) & 1);
+
+        //Pour afficher des groupes de 4 bits,
+        if ((i - bit_depart) % 4 == 0 && i != bit_depart)
+            printf(" ");
+    }
 
 }
