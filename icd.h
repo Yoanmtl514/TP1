@@ -4,7 +4,7 @@
     Auteur : Francis Bourdeau
     Date   : 2 septembre 2015
 
-    Ce module contient le format utilisé pour transmettre des données vols en utilisant
+    Ce module contient le format utilisÃ© pour transmettre des donnÃ©es vols en utilisant
     le protocole ARINC-429.
 
     Liste des fonctions publiques:
@@ -22,12 +22,12 @@
 #define     FORMAT_BCD          1
 #define     FORMAT_DISCRETS     2
 
-// Le nombre de chiffre présent dans un mot ARINC-429 encodé en format BCD
+// Le nombre de chiffre prÃ©sent dans un mot ARINC-429 encodÃ© en format BCD
 #define NB_CHIFFRE_ENCODER_BCD  4
 
 
 /* 
- *  Signafication du champs SSM selon le format utilisé (Bit 30 et Bit 31)
+ *  Signafication du champs SSM selon le format utilisÃ© (Bit 30 et Bit 31)
  */
 #define     SSM_PLUS_NORD_EST       0
 #define     SSM_PAS_DE_DONNEE       1
@@ -44,7 +44,7 @@
 
 
 /* 
- *  Format d'encodage du mot contenant l'aéroport de départ.
+ *  Format d'encodage du mot contenant l'aÃ©roport de dÃ©part.
  */
 #define     NUMERO_MOT_DEPART           232
 #define     TYPE_MOT_DEPART             BCD_LABEL
@@ -59,7 +59,7 @@
 
 
 /* 
- *  Format d'encodage du mot contenant l'aéroport de destination.
+ *  Format d'encodage du mot contenant l'aÃ©roport de destination.
  */
 #define     NUMERO_MOT_DESTINATION      255
 #define     TYPE_MOT_DESTINATION        BCD_LABEL
