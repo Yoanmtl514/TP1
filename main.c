@@ -1,4 +1,3 @@
-
 /****************************************************************************************
 /*                                      MAIN                                            *
 /****************************************************************************************
@@ -33,9 +32,16 @@ int main(void)
 
     afficher_entete_decodeur();
 
-    int id_port_udp = initialiser_port_udp(55001);
+    initialiser_port_udp(55001);
 
-    while(1)
-    {
+    
+    while (1) {
+
+
+        }
     }
+    return EXIT_SUCCESS;
 }
+
+
+#endif
