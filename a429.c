@@ -27,8 +27,18 @@ void afficher_entete_decodeur()
 
 void afficher_mot_a429(unsigned int entier)
 {
+    // Affichage des bits du mot ARINC-429
+    for (int i = 32 - 1; i >= 0; i--) {
+        printf("%d", (entier >> i) & 1);
+        if (i % 4 == 0)
+            printf(" "); // Ajouter un espace après chaque groupe de 4 bits
+    }
+}
 
-    // ************************A FAIRE *********************************
+void decoder_mot_a429(unsigned entier, int* est_corrompi,int* numero_mot, double* donnee_bnr, int* donnee_bcd1, int* donnee_bcd2, int* donnee_bcd3, int* donnee_bcd4)
+{
+    //obtention du mot en base hexa
+    *numero_mot = entier & 0x1FF;
 
 }
 
