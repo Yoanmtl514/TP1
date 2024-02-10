@@ -17,8 +17,8 @@
 #ifndef __H2024TP1_CONFIGURATION__
 #define __H2024TP1_CONFIGURATION__
 
-#define APPLICATION     0
-#define TEST            1
+#define APPLICATION     1
+#define TEST            0
 #define PORT55001       0
 #define PAIRE           0
 #define IMPAIRE         0
