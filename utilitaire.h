@@ -9,8 +9,8 @@
 
 
 *****************************************************************************************/
-#ifndef __H2024TP1_utilitaire.h__
-#define __H2024TP1_utilitaire.h__
+#ifndef __H2024TP1_utilitaire__
+#define __H2024TP1_utilitaire__
 
 /*
     AFFICHER_HEURE
@@ -56,4 +56,8 @@ int decimale_a_octale (unsigned int entier_decimal);
 */
 int calculer_nb_bits_actifs( unsigned int valeur);
 
-void afficher_bits ( unsigned int valeur, unsigned int bit_faible, unsigned int bit_fort);
+void afficher_bits ( unsigned int valeur, int bit_faible, int bit_fort);
+
+void afficher_mot_a429(unsigned int mot);
+
+#endif
