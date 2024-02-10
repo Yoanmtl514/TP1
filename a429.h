@@ -27,6 +27,6 @@ void afficher_entete_decodeur();
 
 void afficher_mot_a429(unsigned int entier);
 
-void decoder_mot_a429(unsigned entier, )
+void decoder_mot_a429(unsigned entier, int* est_corrompi,int* numero_mot, double* donnee_bnr, int* donnee_bcd1, int* donnee_bcd2, int* donnee_bcd3, int* donnee_bcd4);
 
 #endif
