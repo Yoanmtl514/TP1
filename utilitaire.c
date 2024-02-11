@@ -20,29 +20,15 @@ Ce module contient les fonctions utilitaires du projet
 //
 void afficher_heure(unsigned int entier)
 {
-    int h;
-    int m;
-    int s;
+    int h, m, s;
 
-    h = (entier /3600);
-    if( h<10)
-    {
-        printf("0%dh",h);
-    }
-    m = (entier -(3600*h))/60;
-    if(m<10)
-    {
-        printf("0%dm",m);
-    }
-    s = (entier -(3600*h)-(m*60));
-    if(s < 10)
-    {
-        printf("0%ds",s);
-    }
-    else
-    {
-        printf("%dh%dm%ds\n",h,m,s);
-    }
+    // Calcul des heures, minutes et secondes
+    h = entier / 3600;
+    m = (entier % 3600) / 60;
+    s = entier % 60;
+
+    // Affichage des heures, minutes et secondes avec deux chiffres et les unités
+    printf("%02dh%02dm%02ds\n", h, m, s);
 }
 
 //
