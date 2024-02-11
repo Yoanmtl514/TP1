@@ -28,12 +28,107 @@ void afficher_entete_decodeur()
 
 void afficher_mot_a429(unsigned int entier)
 {
-    // Affichage des bits du mot ARINC-429
-    for (int i = 32 - 1; i >= 0; i--) {
-        printf("%d", (entier >> i) & 1);
-        if (i % 4 == 0)
-            printf(" "); // Ajouter un espace après chaque groupe de 4 bits
+    int est_corrompu, numero_mot;
+    double donnee_bnr;
+    int donnee_bcd1, donnee_bcd2,donnee_bcd3,donnee_bcd4;
+
+    decoder_mot_a429(entier,&est_corrompu,&numero_mot,&donnee_bnr, &donnee_bcd1,&donnee_bcd2,&donnee_bcd3,&donnee_bcd4);
+
+    //Quand le mot = 150, on affiche l'heure
+    if(numero_mot == NUMERO_MOT_UTC)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Heure du vol:           ",entier);
+            afficher_heure(donnee_bnr);
+        }
+        else
+        {
+            printf("\n%i    |           NON| Heure du vol:           ",entier);
+            afficher_heure(donnee_bnr);
+        }
     }
+    //Quand le mot = 232
+    else if( numero_mot == NUMERO_MOT_DEPART)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Depart de l'aeroport:   %i%i%i%i",entier,donnee_bcd1+'A',donnee_bcd2+'A', donnee_bcd3+'A', donnee_bcd4+'A');
+        }
+        else
+        {
+            printf("\n%i    |           NON| Depart de l'aeroport:   %i%i%i%i",entier,donnee_bcd1+'A',donnee_bcd2+'A', donnee_bcd3+'A', donnee_bcd4+'A');
+        }
+
+    }
+
+    //Quand le mot = 252 on affiche l'altitude
+    else if( numero_mot == NUMERO_MOT_ALTITUDE)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Altitude:               %f",entier,donnee_bnr);
+        }
+        else
+        {
+            printf("\n%i    |           NON| Altitude:               %f",entier,donnee_bnr);
+        }
+    }
+
+    //Quand le mot = 255
+    else if( numero_mot == NUMERO_MOT_DESTINATION)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Arrive a l'aeroport:    %i%i%i%i",entier,donnee_bcd1+'A',donnee_bcd2+'A', donnee_bcd3+'A', donnee_bcd4+'A');
+        }
+        else
+        {
+            printf("\n%i    |           NON| Arrive a l'aeroport:    %i%i%i%i",entier,donnee_bcd1+'A',donnee_bcd2+'A', donnee_bcd3+'A', donnee_bcd4+'A');
+        }
+    }
+
+    //Quand le mot = 260
+    else if( numero_mot == NUMERO_MOT_DATE)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Date du vol:            %i%i%i",entier,donnee_bcd3,donnee_bcd2,donnee_bcd1);
+        }
+        else
+        {
+            printf("\n%i    |           NON| Date du vol:            %i%i%i",entier,donnee_bcd3,donnee_bcd2,donnee_bcd1);
+        }
+
+    }
+
+    //Quand le mot = 310
+    else if( numero_mot == NUMERO_MOT_LATITUDE)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Lattitude:              %f",entier,donnee_bnr);
+        }
+        else
+        {
+            printf("\n%i    |           NON| Lattitude:              %f",entier,donnee_bnr);
+        }
+
+    }
+
+    //Quand le mot = 311
+    else if( numero_mot == NUMERO_MOT_LONGITUDE)
+    {
+        if(est_corrompu==1)
+        {
+            printf("\n%i    |           OUI| Longitude:              %f",entier,donnee_bnr);
+        }
+        else
+        {
+            printf("\n%i    |           NON| Longitude:              %f",entier,donnee_bnr);
+        }
+    }
+
 }
 
 void decoder_mot_a429(unsigned int entier, int* est_corrompu, int* numero_mot, double* donnee_bnr, int* donnee_bcd1, int* donnee_bcd2, int* donnee_bcd3, int* donnee_bcd4)
