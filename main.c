@@ -10,21 +10,17 @@ leur 4 composantes cohérentes l'une par rapport à l'autre.
 *****************************************************************************************/
 #include <stdlib.h>
 #include <stdio.h>
-
 #include "configuration.h"
-
-#include "C:/Users/Yoan/Desktop/INF147/H2024TP1/decodeur/a429.h"
-#include "udp\port_udp.h"
+#include "decodeur/a429.h"
+#include "udp/port_udp.h"
 
 /****************************************************************************************
 *                           DÉFINTION DES TYPES ET CONSTANTES                           *
 ****************************************************************************************/
 
+//La definition des constantes est etabli dans le fichier icd.h
 
 
-/****************************************************************************************
-*                           DÉFINITION DES FONCTIONS PUBLIQUES                          *
-****************************************************************************************/
 
 
 #if APPLICATION
@@ -36,11 +32,10 @@ int main(void)
     //Requis 27 initialiser le port UDP 55001
     int id_port_udp = initialiser_port_udp(55001);
 
-    //Requis 28: Lecture continue sur le port udp 5501
-
+    //Boucle infini
     while(1)
     {
-        int mot_arinc429;
+        unsigned int mot_arinc429;
         // Lecture sur le port UDP 5501
         recevoir_port_udp(id_port_udp, &mot_arinc429, sizeof(unsigned int));
 
@@ -48,6 +43,7 @@ int main(void)
         afficher_mot_a429(mot_arinc429);
     }
 
+    return EXIT_SUCCESS;
 }
 
 
