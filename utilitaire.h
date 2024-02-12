@@ -56,8 +56,21 @@ int decimale_a_octale (unsigned int entier_decimal);
 */
 int calculer_nb_bits_actifs( unsigned int valeur);
 
-void afficher_bits ( unsigned int valeur, int bit_faible, int bit_fort);
+/*
+    AFFICHER_BITS
 
-void afficher_mot_a429(unsigned int mot);
+    Cette fonction permet d'afficher une valeur recu en hexadecimal en valeur binaire regroupe par groupe de 4bits
+    et ce du bit de depart souhaite jusuq'au bit de fin souhaite
+
+    Paramètres:
+        - Un entier non signe contenant la valeur a afficher.
+        - Un entier représentant la position bit affiché ayant le poids le plus faible.
+        - Un entier représentant la position bit affiché ayant le poids le plus fort.
+
+    Retour:
+        - Aucun.
+
+*/
+void afficher_bits ( unsigned int valeur, int bit_faible, int bit_fort);
 
 #endif
